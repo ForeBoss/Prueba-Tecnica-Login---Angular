@@ -1,0 +1,28 @@
+<app-nav></app-nav>
+<div class="container mt-4">
+  <div *ngIf="!userLoginOn" class="alert alert-danger text-center" role="alert">
+    <i class="bi bi-exclamation-triangle-fill"></i> Usuario NO autenticado
+  </div>
+
+  <div *ngIf="userLoginOn" class="alert alert-success text-center" role="alert">
+    <i class="bi bi-person-check-fill"></i> Usuario Autenticado
+  </div>
+
+  <div *ngIf="userLoginOn" class="card shadow-sm mt-3">
+    <div class="card-header bg-primary text-white text-center">
+      <h5 class="mb-0">
+        <i class="bi bi-person-circle"></i> Información del Usuario
+      </h5>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Nombre:</strong> {{ userData?.name }}
+        </li>
+        <li class="list-group-item">
+          <strong>Email:</strong> {{ userData?.email }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

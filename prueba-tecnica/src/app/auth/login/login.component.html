@@ -1,0 +1,62 @@
+<section class="py-5 d-flex justify-content-center">
+  <div
+    class="w-100 w-sm-75 w-md-50 w-lg-40 w-xl-30 p-4"
+    style="max-width: 500px"
+  >
+    <h2 class="fw-bolder text-center">Login</h2>
+    <form [formGroup]="loginForm">
+      <p class="text-danger text-center">{{ loginError }}</p>
+
+      <div class="form-group mb-3">
+        <label for="correo">Correo</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="correo"
+          placeholder="Digita tu correo"
+          required
+        />
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="text-danger"
+        >
+          <div *ngIf="email.errors?.['required']">El correo es requerido.</div>
+          <div *ngIf="email.errors?.['email']">
+            El correo debe tener un formato válido.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="password">Contraseña:</label>
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Digita tu contraseña"
+          minlength="6"
+          required
+        />
+        <div
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="text-danger"
+        >
+          <div *ngIf="password.errors?.['required']">
+            La contraseña es requerida.
+          </div>
+          <div *ngIf="password.errors?.['minlength']">
+            La contraseña debe tener al menos 6 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" (click)="login()" class="btn btn-primary">
+          Iniciar Sesión
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
